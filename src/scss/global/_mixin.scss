@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+@use "./variables" as *;
+
+//==========================================================================
+//_mixin.scss
+//==========================================================================
+
+//font-size at < 375
+@mixin rem($fSize: 1.4) {
+  font-size:calc(($fSize * 1000) / 375);
+}
+
+//base easing
+@mixin transition {
+  transition: all .3s $easeOutCubic;
+}
+
+//media query
+@mixin xsMin {
+  @media print, screen and ($xsMin) {
+    @content;
+  }
+}
+@mixin smMin {
+  @media print, screen and ($smMin) {
+    @content;
+  }
+}
+@mixin mdMin {
+  @media print, screen and ($mdMin) {
+    @content;
+  }
+}
+@mixin lgMin {
+  @media print, screen and ($lgMin) {
+    @content;
+  }
+}
+@mixin xsMax {
+  @media screen and ($xsMax) {
+    @content;
+  }
+}
+@mixin smMax {
+  @media screen and ($smMax) {
+    @content;
+  }
+}
+@mixin mdMax {
+  @media screen and ($mdMax) {
+    @content;
+  }
+}
+@mixin lgMax {
+  @media screen and ($lgMax) {
+    @content;
+  }
+}
+@mixin max-screen($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin min-screen($breakpoint) {
+  @media print, screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin screen($breakpoint-min, $breakpoint-max) {
+  @media screen and (min-width: $breakpoint-min) and (max-width: $breakpoint-max) {
+    @content;
+  }
+}
+
+//hover
+@mixin hover {
+  @include smMin {
+    .is-view-pc & {
+      &:hover {
+        @content;
+      }
+    }
+  }
+}
+
+
+//-----------------------------------------------------------------
+//anime
+//-----------------------------------------------------------------
+//fadeIn
+@mixin animate-fadeIn($duration, $delay) {
+  opacity: 0;
+  transition-duration: $duration;
+  transition-delay: $delay;
+}
+@mixin animated-fadeIn {
+  opacity: 1;
+}
+
+//fadeInUp
+@mixin animate-fadeInUp($duration, $delay) {
+  opacity: 0;
+  transform: translateY(50px);
+  transition-duration: $duration;
+  transition-delay: $delay;
+}
+@mixin animated-fadeInUp {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+//fadeInLeft
+@mixin animate-fadeInLeft($duration, $delay) {
+  opacity: 0;
+  transform: translateX(50px);
+  transition-duration: $duration;
+  transition-delay: $delay;
+}
+@mixin animated-fadeInLeft {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+//fadeInRight
+@mixin animate-fadeInRight($duration, $delay) {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition-duration: $duration;
+  transition-delay: $delay;
+}
+@mixin animated-fadeInRight {
+  opacity: 1;
+  transform: translateX(0);
+}

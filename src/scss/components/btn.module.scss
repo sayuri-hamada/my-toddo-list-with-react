@@ -1,0 +1,9 @@
+@use "../global/" as g;
+
+.btn {
+  background-color: g.$colorSub;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+}

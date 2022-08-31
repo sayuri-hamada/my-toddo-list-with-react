@@ -1,0 +1,7 @@
+@use "../global/" as g;
+
+.ttl {
+  font-size: g.sm_vw(32);
+  color: g.$colorMain;
+  margin-bottom: 15px;
+}
