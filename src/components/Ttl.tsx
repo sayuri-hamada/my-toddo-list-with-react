@@ -5,11 +5,12 @@ import styles from '../scss/components/ttl.module.scss';
 
 type Props = {
   children: ReactNode;
+  className?: string
 }
 
 export const Ttl: FC<Props> = (props) => {
-  const { children } = props;
+  const { children, className } = props;
   return (
-    <h2 className={styles.ttl}><span>{children}</span></h2>
+    <h2 className={clsx(styles.ttl, className)}><span>{children}</span></h2>
   )
 };
