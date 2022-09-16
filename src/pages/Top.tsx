@@ -16,9 +16,20 @@ export const Top: FC = memo(() => {
     setTaskList(upDateTaskList);
   }
 
-  const onClickDelete = () => {
-
+  const onClickDelete = (index: number) => {
+    const upDateTaskList = [...taskList];
+    upDateTaskList.splice(index, 1);
+    setTaskList(upDateTaskList);
   }
+
+  const onClickBack = (index: number) => {
+    const upDateTaskList = taskList.map((item, itemIndex) =>
+      itemIndex === index ?
+      {...item, completed: false} : item
+    )
+    setTaskList(upDateTaskList);
+  }
+
   return (
     <>
       <Header isTopPage={true} />
@@ -26,7 +37,7 @@ export const Top: FC = memo(() => {
       <div className='todo-list'>
         {taskList.map((item, index) => (
           item.completed ||
-          <TodoCard key={item.taskName} taskName={item.taskName} completed={item.completed} index={index} onClickComplete={onClickComplete} onClickDelete={onClickDelete} />
+          <TodoCard key={item.taskName} taskName={item.taskName} completed={item.completed} index={index} onClickComplete={onClickComplete} onClickDelete={onClickDelete} onClickBack={onClickBack} />
         ))
         }
       </div>
